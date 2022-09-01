@@ -30,19 +30,24 @@ public class Main {
     airport.addPassenger(john);
     airport.addPassenger(mike);
 
-    Ticket ticket1 = new Ticket(1, "AA1234");
+    Ticket ticket1 = new Ticket();
+    ticket1.setSeries("AA");
+    ticket1.setNumber("1234");
+    ticket1.setOrigin("Seattle");
+    ticket1.setDestination("Cairo");
+
     ticket1.setPassenger(john);
 
-    Ticket ticket2 = new Ticket(2, "BB5678");
-    ticket2.setPassenger(john);
+//    Ticket ticket2 = new Ticket(2, "BB5678");
+//    ticket2.setPassenger(john);
 
     john.addTicket(ticket1);
-    john.addTicket(ticket2);
+//    john.addTicket(ticket2);
 
-    Ticket ticket3 = new Ticket(3, "CC5678");
-    ticket3.setPassenger(mike);
+//    Ticket ticket3 = new Ticket(3, "CC5678");
+//    ticket3.setPassenger(mike);
 
-    mike.addTicket(ticket3);
+//    mike.addTicket(ticket3);
 
     em.persist(airport);
 
@@ -50,8 +55,8 @@ public class Main {
     em.persist(mike);
 
     em.persist(ticket1);
-    em.persist(ticket2);
-    em.persist(ticket3);
+//    em.persist(ticket2);
+//    em.persist(ticket3);
 
     em.getTransaction().commit();
     emf.close();

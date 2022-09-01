@@ -14,11 +14,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Ticket {
   @Id
-  @Column(name = "ID")
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
 
-  @Column(name = "NUMBER")
+  private String series;
   private String number;
+  private String origin;
+  private String destination;
 
   @ManyToOne
   @JoinColumn(name = "PASSENGER_ID")
