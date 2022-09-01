@@ -9,12 +9,15 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "TICKETS")
+@IdClass(TicketKey.class)
 @Getter
 @Setter
 @NoArgsConstructor
 public class Ticket {
-  @EmbeddedId
-  private TicketKey id;
+  @Id
+  private String series;
+  private String number;
+
   private String origin;
   private String destination;
 
