@@ -15,7 +15,15 @@ public class Main {
 
     em.getTransaction().begin();
     Airport airport = new Airport(1, "Henri Caonda");
-    Passenger john = new Passenger(1, "John Smith", "1234 100th AVE NE");
+    Passenger john = new Passenger(1, "John Smith");
+    john.setCity("Kirkland");
+    john.setStreet("100th AVE NE");
+    john.setNumber("1234");
+    john.setZipCode("98034");
+    john.setAreaCode("425");
+    john.setPrefix("123");
+    john.setLineNumber("4567");
+
     john.setAirport(airport);
     Passenger mike = new Passenger(2, "Michael Johnson");
     mike.setAirport(airport);

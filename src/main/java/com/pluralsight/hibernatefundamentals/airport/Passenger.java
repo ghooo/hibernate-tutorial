@@ -9,8 +9,14 @@ import java.util.List;
 
 @Entity
 @Table(name = "PASSENGERS")
-@SecondaryTable(name = "ADDRESSES",
-  pkJoinColumns = @PrimaryKeyJoinColumn(name = "PASSENGER_ID", referencedColumnName = "ID"))
+@SecondaryTables(
+  {
+    @SecondaryTable(name = "ADDRESSES",
+      pkJoinColumns = @PrimaryKeyJoinColumn(name = "PASSENGER_ID", referencedColumnName = "ID")),
+    @SecondaryTable(name = "PHONES",
+      pkJoinColumns = @PrimaryKeyJoinColumn(name = "PASSENGER_ID", referencedColumnName = "ID")),
+  }
+)
 @Access(AccessType.FIELD)
 @Getter
 @Setter
@@ -24,8 +30,26 @@ public class Passenger {
   @Column(name = "NAME")
   private String name;
 
-  @Column(name = "PASSENGER_ADDRESS", table = "ADDRESSES", columnDefinition = "varchar(25) not null")
-  private String address;
+  @Column(name = "STREET", table = "ADDRESSES", columnDefinition = "varchar(25) not null")
+  private String street;
+
+  @Column(name = "NUMBER", table = "ADDRESSES", columnDefinition = "varchar(10) not null")
+  private String number;
+
+  @Column(name = "ZIP_CODE", table = "ADDRESSES", columnDefinition = "varchar(10) not null")
+  private String zipCode;
+
+  @Column(name = "CITY", table = "ADDRESSES", columnDefinition = "varchar(25) not null")
+  private String city;
+
+  @Column(name = "AREA_CODE", table = "PHONES", columnDefinition = "varchar(5) not null")
+  private String areaCode;
+
+  @Column(name = "PREFIX", table = "PHONES", columnDefinition = "varchar(5) not null")
+  private String prefix;
+
+  @Column(name = "LINE_NUMBER", table = "PHONES", columnDefinition = "varchar(10) not null")
+  private String lineNumber;
 
   @ManyToOne
   @JoinColumn(name = "AIRPORT_ID")
@@ -36,13 +60,8 @@ public class Passenger {
   private List<Ticket> tickets = new ArrayList<>();
 
   public Passenger(int id, String name) {
-    this(id, name, "N/A");
-  }
-
-  public Passenger(int id, String name, String address) {
     this.id = id;
     this.name = name;
-    this.address = address;
   }
 
   public List<Ticket> getTickets() {
