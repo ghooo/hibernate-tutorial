@@ -15,7 +15,7 @@ public class Main {
 
     em.getTransaction().begin();
     Airport airport = new Airport(1, "Henri Caonda");
-    Passenger john = new Passenger(1, "John Smith");
+    Passenger john = new Passenger(1, "John Smith", "1234 100th AVE NE");
     john.setAirport(airport);
     Passenger mike = new Passenger(2, "Michael Johnson");
     mike.setAirport(airport);
