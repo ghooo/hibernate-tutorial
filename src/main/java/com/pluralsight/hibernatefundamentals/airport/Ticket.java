@@ -13,21 +13,12 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 public class Ticket {
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private int id;
-
-  private String series;
-  private String number;
+  @EmbeddedId
+  private TicketKey id;
   private String origin;
   private String destination;
 
   @ManyToOne
   @JoinColumn(name = "PASSENGER_ID")
   private Passenger passenger;
-
-  public Ticket(int id, String number) {
-    this.id = id;
-    this.number = number;
-  }
 }

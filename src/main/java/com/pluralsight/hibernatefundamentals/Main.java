@@ -3,6 +3,7 @@ package com.pluralsight.hibernatefundamentals;
 import com.pluralsight.hibernatefundamentals.airport.Airport;
 import com.pluralsight.hibernatefundamentals.airport.Passenger;
 import com.pluralsight.hibernatefundamentals.airport.Ticket;
+import com.pluralsight.hibernatefundamentals.airport.TicketKey;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -30,9 +31,12 @@ public class Main {
     airport.addPassenger(john);
     airport.addPassenger(mike);
 
+    TicketKey key = new TicketKey();
+    key.setSeries("AA");
+    key.setNumber("1234");
+
     Ticket ticket1 = new Ticket();
-    ticket1.setSeries("AA");
-    ticket1.setNumber("1234");
+    ticket1.setId(key);
     ticket1.setOrigin("Seattle");
     ticket1.setDestination("Cairo");
 
