@@ -30,6 +30,15 @@ public class Passenger {
   @Column(name = "NAME")
   private String name;
 
+  @Embedded
+  @AttributeOverrides({
+    @AttributeOverride(name = "street", column = @Column(name = "PASSENGER_STREET")),
+    @AttributeOverride(name = "number", column = @Column(name = "PASSENGER_NUMBER")),
+    @AttributeOverride(name = "zipCode", column = @Column(name = "PASSENGER_ZIP_CODE")),
+    @AttributeOverride(name = "city", column = @Column(name = "PASSENGER_CITY"))
+  })
+  private Address address;
+
   @Column(name = "STREET", table = "ADDRESSES", columnDefinition = "varchar(25) not null")
   private String street;
 

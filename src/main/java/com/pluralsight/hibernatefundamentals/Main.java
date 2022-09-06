@@ -18,6 +18,13 @@ public class Main {
     john.setStreet("100th AVE NE");
     john.setNumber("1234");
     john.setZipCode("98034");
+    Address address = new Address();
+    address.setCity("Kirkland");
+    address.setStreet("100th AVE NE");
+    address.setNumber("1234");
+    address.setZipCode("98034");
+    john.setAddress(address);
+
     john.setAreaCode("425");
     john.setPrefix("123");
     john.setLineNumber("4567");
