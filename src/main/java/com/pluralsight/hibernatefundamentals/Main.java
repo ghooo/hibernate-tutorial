@@ -1,9 +1,6 @@
 package com.pluralsight.hibernatefundamentals;
 
-import com.pluralsight.hibernatefundamentals.airport.Airport;
-import com.pluralsight.hibernatefundamentals.airport.Passenger;
-import com.pluralsight.hibernatefundamentals.airport.Ticket;
-import com.pluralsight.hibernatefundamentals.airport.TicketKey;
+import com.pluralsight.hibernatefundamentals.airport.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -51,6 +48,16 @@ public class Main {
 //    Ticket ticket3 = new Ticket(3, "CC5678");
 //    ticket3.setPassenger(mike);
 //    mike.addTicket(ticket3);
+
+    Manager ali = new Manager("Ali Ghoneim");
+    Department accounting = new Department();
+    accounting.setName("Accounting");
+
+    ali.setDepartment(accounting);
+
+    em.persist(ali);
+    em.persist(accounting);
+
 
     em.persist(airport);
 
