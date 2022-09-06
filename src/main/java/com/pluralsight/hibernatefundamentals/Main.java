@@ -30,7 +30,7 @@ public class Main {
 
 
     Ticket ticket1 = new Ticket();
-    ticket1.setSeries("AA");
+    ticket1.setId("AA");
     ticket1.setNumber("1234");
     ticket1.setOrigin("Seattle");
     ticket1.setDestination("Cairo");
@@ -39,11 +39,15 @@ public class Main {
     john.addTicket(ticket1);
 
     Ticket ticket2 = new Ticket();
-    ticket2.setSeries("BB");
+    ticket2.setId("BB");
     ticket2.setNumber("5678");
     ticket2.addPassenger(john);
     ticket2.addPassenger(mike);
     john.addTicket(ticket2);
+
+    Payment payment = new Payment();
+    payment.setTicket(ticket1);
+    payment.setAmount(200);
 
 //    Ticket ticket3 = new Ticket(3, "CC5678");
 //    ticket3.setPassenger(mike);
@@ -54,6 +58,8 @@ public class Main {
     accounting.setName("Accounting");
 
     ali.setDepartment(accounting);
+
+    em.persist(payment);
 
     em.persist(ali);
     em.persist(accounting);

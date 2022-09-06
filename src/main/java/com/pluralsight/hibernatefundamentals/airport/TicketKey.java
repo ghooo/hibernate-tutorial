@@ -10,6 +10,6 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class TicketKey implements Serializable {
-  private String series;
+  private String id;
   private String number;
 }

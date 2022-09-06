@@ -15,7 +15,9 @@ import java.util.List;
 @NoArgsConstructor
 public class Ticket {
   @Id
-  private String series;
+  @Column(name="ID")
+  private String id;
+  @Column(name="NUMBER")
   private String number;
 
   private String origin;
