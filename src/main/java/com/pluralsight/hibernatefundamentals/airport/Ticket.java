@@ -1,11 +1,11 @@
 package com.pluralsight.hibernatefundamentals.airport;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Entity
 @Table(name = "TICKETS")
@@ -21,7 +21,15 @@ public class Ticket {
   private String origin;
   private String destination;
 
-  @ManyToOne
-  @JoinColumn(name = "PASSENGER_ID")
-  private Passenger passenger;
+  @ManyToMany
+  @Setter(AccessLevel.NONE)
+  private List<Passenger> passengers = new ArrayList<>();
+
+  public List<Passenger> getPassengers() {
+    return Collections.unmodifiableList(passengers);
+  }
+
+  public void addPassenger(Passenger passenger) {
+    passengers.add(passenger);
+  }
 }

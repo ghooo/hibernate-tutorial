@@ -55,7 +55,7 @@ public class Passenger {
   @JoinColumn(name = "AIRPORT_ID")
   private Airport airport;
 
-  @OneToMany(mappedBy = "passenger")
+  @ManyToMany(mappedBy = "passengers")
   @Setter(AccessLevel.NONE)
   private List<Ticket> tickets = new ArrayList<>();
 

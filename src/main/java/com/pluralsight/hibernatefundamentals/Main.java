@@ -37,13 +37,15 @@ public class Main {
     ticket1.setNumber("1234");
     ticket1.setOrigin("Seattle");
     ticket1.setDestination("Cairo");
-    ticket1.setPassenger(john);
+    ticket1.addPassenger(john);
+    ticket1.addPassenger(mike);
     john.addTicket(ticket1);
 
     Ticket ticket2 = new Ticket();
     ticket2.setSeries("BB");
     ticket2.setNumber("5678");
-    ticket2.setPassenger(john);
+    ticket2.addPassenger(john);
+    ticket2.addPassenger(mike);
     john.addTicket(ticket2);
 
 //    Ticket ticket3 = new Ticket(3, "CC5678");
