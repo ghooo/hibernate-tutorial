@@ -16,12 +16,12 @@ public class Payment {
   @GeneratedValue
   private int id;
 
-  @ManyToOne
-  @JoinColumns({
-    @JoinColumn(name = "TICKET_ID", referencedColumnName = "ID"),
-    @JoinColumn(name = "TICKET_NUMBER", referencedColumnName = "NUMBER")
-  })
-  private Ticket ticket;
+//  @ManyToOne
+//  @JoinColumns({
+//    @JoinColumn(name = "TICKET_ID", referencedColumnName = "ID"),
+//    @JoinColumn(name = "TICKET_NUMBER", referencedColumnName = "NUMBER")
+//  })
+//  private Ticket ticket;
 
   private int amount;
 }

@@ -37,23 +37,23 @@ public class Main {
 
 
     Ticket ticket1 = new Ticket();
-    ticket1.setId("AA");
+//    ticket1.setId("AA");
     ticket1.setNumber("1234");
-    ticket1.setOrigin("Seattle");
-    ticket1.setDestination("Cairo");
-    ticket1.addPassenger(john);
-    ticket1.addPassenger(mike);
+//    ticket1.setOrigin("Seattle");
+//    ticket1.setDestination("Cairo");
+//    ticket1.addPassenger(john);
+//    ticket1.addPassenger(mike);
     john.addTicket(ticket1);
 
     Ticket ticket2 = new Ticket();
-    ticket2.setId("BB");
+//    ticket2.setId("BB");
     ticket2.setNumber("5678");
-    ticket2.addPassenger(john);
-    ticket2.addPassenger(mike);
+//    ticket2.addPassenger(john);
+//    ticket2.addPassenger(mike);
     john.addTicket(ticket2);
 
     Payment payment = new Payment();
-    payment.setTicket(ticket1);
+//    payment.setTicket(ticket1);
     payment.setAmount(200);
 
 //    Ticket ticket3 = new Ticket(3, "CC5678");
@@ -77,8 +77,8 @@ public class Main {
     em.persist(john);
     em.persist(mike);
 
-    em.persist(ticket1);
-    em.persist(ticket2);
+//    em.persist(ticket1);
+//    em.persist(ticket2);
 //    em.persist(ticket3);
 
     em.getTransaction().commit();

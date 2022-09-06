@@ -64,8 +64,11 @@ public class Passenger {
   @JoinColumn(name = "AIRPORT_ID")
   private Airport airport;
 
-  @ManyToMany(mappedBy = "passengers")
   @Setter(AccessLevel.NONE)
+  @ElementCollection
+  @CollectionTable(name = "PASSENGER_TICKETS", joinColumns = {
+    @JoinColumn(name = "PASSENGER_ID", referencedColumnName = "ID")
+  })
   private List<Ticket> tickets = new ArrayList<>();
 
   public Passenger(int id, String name) {
