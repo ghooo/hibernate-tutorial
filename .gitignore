@@ -43,3 +43,6 @@ buildNumber.properties
 
 # intellij configs
 .idea/
+
+# intellij iml
+*.iml
