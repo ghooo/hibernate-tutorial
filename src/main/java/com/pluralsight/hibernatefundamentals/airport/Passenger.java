@@ -3,9 +3,7 @@ package com.pluralsight.hibernatefundamentals.airport;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "PASSENGERS")
@@ -71,6 +69,14 @@ public class Passenger {
   })
   private List<Ticket> tickets = new ArrayList<>();
 
+  @ElementCollection
+  @MapKeyColumn(name = "ATTRIBUTE_NAME")
+  @Column(name = "ATTRIBUTE_VALUE")
+  @CollectionTable(name = "PASSENGER_ATTRIBUTES", joinColumns = {
+    @JoinColumn(name = "PASSENGER_ID", referencedColumnName = "ID")
+  })
+  private Map<String, String> attributes = new HashMap<>();
+
   public Passenger(int id, String name) {
     this.id = id;
     this.name = name;
@@ -82,6 +88,14 @@ public class Passenger {
 
   public void addTicket(Ticket ticket) {
     tickets.add(ticket);
+  }
+
+  public Map<String, String> getAttributes() {
+    return Collections.unmodifiableMap(attributes);
+  }
+
+  public void addAttribute(String key, String value) {
+    attributes.put(key, value);
   }
 
 }

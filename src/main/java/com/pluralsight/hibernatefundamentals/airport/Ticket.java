@@ -7,7 +7,12 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@Embeddable
-public class Ticket {
+@Entity
+@Table(name = "TICKETS")
+public abstract class Ticket {
+  @Setter(AccessLevel.NONE)
+  @Id
+  @GeneratedValue
+  private int id;
   private String number;
 }

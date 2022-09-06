@@ -5,6 +5,7 @@ import com.pluralsight.hibernatefundamentals.airport.*;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.time.LocalDate;
 
 public class Main {
   public static void main(String[] args) {
@@ -36,21 +37,24 @@ public class Main {
     airport.addPassenger(mike);
 
 
-    Ticket ticket1 = new Ticket();
+//    Ticket ticket1 = new Ticket();
 //    ticket1.setId("AA");
-    ticket1.setNumber("1234");
+//    ticket1.setNumber("1234");
 //    ticket1.setOrigin("Seattle");
 //    ticket1.setDestination("Cairo");
 //    ticket1.addPassenger(john);
 //    ticket1.addPassenger(mike);
-    john.addTicket(ticket1);
+//    john.addTicket(ticket1);
 
-    Ticket ticket2 = new Ticket();
+//    Ticket ticket2 = new Ticket();
 //    ticket2.setId("BB");
-    ticket2.setNumber("5678");
+//    ticket2.setNumber("5678");
 //    ticket2.addPassenger(john);
 //    ticket2.addPassenger(mike);
-    john.addTicket(ticket2);
+//    john.addTicket(ticket2);
+
+    john.addAttribute("VIP", "Yes");
+    john.addAttribute("FREQUENT_FLYER", "Yes");
 
     Payment payment = new Payment();
 //    payment.setTicket(ticket1);
@@ -66,6 +70,15 @@ public class Main {
 
     ali.setDepartment(accounting);
 
+    OneWayTicket oneWayTicket = new OneWayTicket();
+    oneWayTicket.setNumber("AA1234");
+    oneWayTicket.setLatestDepartureDate(LocalDate.of(2021, 3, 20));
+    ReturnTicket returnTicket = new ReturnTicket();
+    returnTicket.setNumber("BB5678");
+    returnTicket.setLatestReturnDate(LocalDate.of(2022, 1, 31));
+
+    em.persist(oneWayTicket);
+    em.persist(returnTicket);
     em.persist(payment);
 
     em.persist(ali);
