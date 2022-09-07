@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@DiscriminatorValue("R")
+@Table(name = "RETURN_TICKETS")
 public class ReturnTicket extends Ticket{
   private LocalDate latestReturnDate;
 }

@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@DiscriminatorValue("O")
+@Table(name = "ONE_WAY_TICKETS")
 public class OneWayTicket extends Ticket{
   private LocalDate latestDepartureDate;
 }
