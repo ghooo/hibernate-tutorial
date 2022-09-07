@@ -1,9 +1,14 @@
 package com.pluralsight.hibernatefundamentals;
 
 import com.pluralsight.hibernatefundamentals.airport.Country;
+import com.pluralsight.hibernatefundamentals.airport.CountryService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,9 +19,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration("classpath:application-context.xml")
 public class CountriesHibernateTest {
-  private EntityManagerFactory emf;
-  private EntityManager em;
+
+  @Autowired
+  private CountryService countryService;
 
   private List<Country> expectedCountryList = new ArrayList<>();
 
@@ -28,30 +36,31 @@ public class CountriesHibernateTest {
 
   @BeforeEach
   public void setUp() {
+    countryService.init();
     initExpectedCountryList();
 
-    emf = Persistence.createEntityManagerFactory("hibernatefundamentals.m02.ex01");
-
-    em = emf.createEntityManager();
-    em.getTransaction().begin();
-    for (int i = 0; i < COUNTRY_INIT_DATA.length; i++) {
-      String[] countryInitData = COUNTRY_INIT_DATA[i];
-      Country country = new Country(countryInitData[0], countryInitData[1]);
-      em.persist(country);
-    }
-    em.getTransaction().commit();
+//    emf = Persistence.createEntityManagerFactory("hibernatefundamentals.m02.ex01");
+//
+//    em = emf.createEntityManager();
+//    em.getTransaction().begin();
+//    for (int i = 0; i < COUNTRY_INIT_DATA.length; i++) {
+//      String[] countryInitData = COUNTRY_INIT_DATA[i];
+//      Country country = new Country(countryInitData[0], countryInitData[1]);
+//      em.persist(country);
+//    }
+//    em.getTransaction().commit();
 
   }
 
   @AfterEach
   public void dropDown() {
-    em.close();
-    emf.close();
+    countryService.clear();
+
   }
 
   @Test
   public void testCountryList() {
-    List<Country> countryList = em.createQuery("select c from Country c").getResultList();
+    List<Country> countryList = countryService.getAllCountries();
     assertNotNull(countryList);
     assertEquals(COUNTRY_INIT_DATA.length, countryList.size());
     for (int i = 0; i < expectedCountryList.size(); i++){
