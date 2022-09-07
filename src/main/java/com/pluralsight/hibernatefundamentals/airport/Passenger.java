@@ -62,12 +62,12 @@ public class Passenger {
   @JoinColumn(name = "AIRPORT_ID")
   private Airport airport;
 
-  @Setter(AccessLevel.NONE)
-  @ElementCollection
-  @CollectionTable(name = "PASSENGER_TICKETS", joinColumns = {
-    @JoinColumn(name = "PASSENGER_ID", referencedColumnName = "ID")
-  })
-  private List<Ticket> tickets = new ArrayList<>();
+//  @Setter(AccessLevel.NONE)
+//  @ElementCollection
+//  @CollectionTable(name = "PASSENGER_TICKETS", joinColumns = {
+//    @JoinColumn(name = "PASSENGER_ID", referencedColumnName = "ID")
+//  })
+//  private List<Ticket> tickets = new ArrayList<>();
 
   @ElementCollection
   @MapKeyColumn(name = "ATTRIBUTE_NAME")
@@ -82,13 +82,13 @@ public class Passenger {
     this.name = name;
   }
 
-  public List<Ticket> getTickets() {
-    return Collections.unmodifiableList(tickets);
-  }
-
-  public void addTicket(Ticket ticket) {
-    tickets.add(ticket);
-  }
+//  public List<Ticket> getTickets() {
+//    return Collections.unmodifiableList(tickets);
+//  }
+//
+//  public void addTicket(Ticket ticket) {
+//    tickets.add(ticket);
+//  }
 
   public Map<String, String> getAttributes() {
     return Collections.unmodifiableMap(attributes);

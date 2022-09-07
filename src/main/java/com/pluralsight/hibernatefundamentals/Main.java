@@ -73,9 +73,12 @@ public class Main {
     OneWayTicket oneWayTicket = new OneWayTicket();
     oneWayTicket.setNumber("AA1234");
     oneWayTicket.setLatestDepartureDate(LocalDate.of(2021, 3, 20));
+    oneWayTicket.setPassenger(john);
+
     ReturnTicket returnTicket = new ReturnTicket();
     returnTicket.setNumber("BB5678");
     returnTicket.setLatestReturnDate(LocalDate.of(2022, 1, 31));
+    returnTicket.setPassenger(john);
 
     em.persist(oneWayTicket);
     em.persist(returnTicket);
