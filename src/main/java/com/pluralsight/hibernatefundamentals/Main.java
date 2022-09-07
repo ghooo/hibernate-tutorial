@@ -80,6 +80,9 @@ public class Main {
     returnTicket.setLatestReturnDate(LocalDate.of(2022, 1, 31));
     returnTicket.setPassenger(john);
 
+    john.setVip(true);
+    mike.setVip(false);
+
     em.persist(oneWayTicket);
     em.persist(returnTicket);
     em.persist(payment);

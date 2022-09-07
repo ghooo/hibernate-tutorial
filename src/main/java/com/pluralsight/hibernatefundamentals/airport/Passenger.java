@@ -28,6 +28,9 @@ public class Passenger {
   @Column(name = "NAME")
   private String name;
 
+  @Convert(converter = VipConverter.class)
+  private boolean vip;
+
   @Embedded
   @AttributeOverrides({
     @AttributeOverride(name = "street", column = @Column(name = "PASSENGER_STREET")),
